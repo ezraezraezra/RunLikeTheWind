@@ -30,8 +30,11 @@ var CANVAS_LEGEND = function() {
 	    	processing.popMatrix();
 	    	
 	    	// Makers
-	    	function markers(meters,position) {
-	    		var yPosition;
+	    	function markers(meters,position,measurement) {
+	    		var yText;
+	    		var yards;
+	    		var xMarker
+	    		
 	    		if(position === 0) {
 	    			yText = 0;
 	    		}
@@ -39,19 +42,24 @@ var CANVAS_LEGEND = function() {
 	    			yText = -20;
 	    		}
 	    		
-	    		processing.pushMatrix();
+	    		if(measurement.charAt(0) == 'm') {
+	    			yards = metersToYards(meters);
+	    		}
+	    		else {
+	    			yards = meters;
+	    			meters = yardsToMeters(yards);
+	    		}
 	    		
+	    		xMarker = processing.map(meters, 0, 5000, 0, 840);
+	    		
+	    		processing.pushMatrix();
 	    			processing.translate(30, 45);
 		    		
 		    		processing.stroke(255,195,0);
 		    		processing.strokeWeight(4);
 		    		processing.strokeCap(processing.ROUND);
-		    		var xMarker = processing.map(meters, 0, 5000, 0, 840);
-		    		var yards = metersToYards(meters);
 		    		processing.textFont(font, 12);
 		    		processing.textAlign(processing.CENTER);
-		    		
-		    		
 		    		
 		    		// Meters Marker
 		    		processing.text(meters,xMarker, yText);
@@ -64,60 +72,25 @@ var CANVAS_LEGEND = function() {
 	    		function metersToYards(meters) {
 	    			return Math.round(meters * 1.0936133);
 	    		}
+	    		function yardsToMeters(yards) {
+	    			return Math.round(yards * 0.9144);
+	    		}
 	    	}
 	    	
-	    	markers(0,1);
-	    	markers(55,0);
-	    	markers(200,1);
-	    	markers(400,0);
-	    	markers(800,1);
-	    	markers(1000,0);
-	    	markers(3000,0);
-	    	markers(5000,1);
+	    	markers(   0,1,'m');
+	    	markers(  55,0,'m');
+	    	markers( 200,1,'m');
+	    	markers( 400,0,'m');
+	    	markers( 600,1,'y')
+	    	markers( 800,0,'m');
+	    	markers(1000,1,'m');
+	    	markers(3000,0,'m');
+	    	markers(5000,1,'m');
+	    	markers(1760,0,'y');
 	    }
 	    
 	    scale();
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    // // determine center and max clock arm length  
-	    // var centerX = processing.width / 2, centerY = processing.height / 2; 
-	    // //console.log(processing.width()); 
-	    // var maxArmLength = Math.min(centerX, centerY);  
-// 	  
-	    // function drawArm(position, lengthScale, weight) {        
-	      // processing.strokeWeight(weight);  
-	      // processing.line(centerX, centerY,   
-	        // centerX + Math.sin(position * 2 * Math.PI) * lengthScale * maxArmLength,  
-	        // centerY - Math.cos(position * 2 * Math.PI) * lengthScale * maxArmLength); 
-	        // processing.textFont(font, 32);
-	  	// processing.text("word", 15, 50); 
-	    // }  
-// 	  
-	    // // erase background  
-	    // processing.background(22,22,22);  
-// 	  
-	    // var now = new Date();  
-// 	  
-	    // // Moving hours arm by small increments  
-	    // var hoursPosition = (now.getHours() % 12 + now.getMinutes() / 60) / 12;  
-	    // drawArm(hoursPosition, 0.5, 5);  
-// 	  
-	    // // Moving minutes arm by small increments  
-	    // var minutesPosition = (now.getMinutes() + now.getSeconds() / 60) / 60;  
-	    // drawArm(minutesPosition, 0.80, 3);  
-// 	  
-	    // // Moving hour arm by second increments  
-	    // var secondsPosition = now.getSeconds() / 60;  
-	    // drawArm(secondsPosition, 0.90, 1);  
+	     
 	  };  
 	    
 	}  
