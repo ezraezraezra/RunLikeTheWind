@@ -2,7 +2,7 @@
  * @author Ezra Velazquez
  */
 
-var CANVAS_LEGEND = function() {
+var CANVAS_SCALE = function() {
 	// Simple way to attach js code to the canvas is by using a function  
 	function sketchProc(processing) { 
 	  var font;
