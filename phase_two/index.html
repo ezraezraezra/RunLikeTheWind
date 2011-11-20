@@ -5,14 +5,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>New Web Project</title>
 		<script type="text/javascript" src="jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
 		<script type="text/javascript" src="processing-1.3.6.min.js"></script>
-		
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
 	</head>
 	<body>
 		<h1>New Web Project Page</h1>
 		<canvas id="canvas_scale" width="200" height="200"></canvas><br/><br/>
-		<canvas id="canvas_race_info" width="200" height="200"></canvas>
+		<canvas id="canvas_race_info" width="200" height="200"></canvas><br/><br/>
+		<canvas id="canvas_race_lane_1" width="200" height="200"></canvas><br/><br/>
+		<canvas id="canvas_race_lane_2" width="200" height="200"></canvas>
+		<div id="runner_amount"></div>
 		<script type="text/javascript" src="scale.js"></script>
 		<script type="text/javascript" src="race_info.js"></script>
+		<script type="text/javascript" src="race_lane.js"></script>
+		<script type="text/javascript">
+			var rl1 = new CANVAS_RACE_LANE("canvas_race_lane_1", 400, "carleton");
+			var rl2 = new CANVAS_RACE_LANE("canvas_race_lane_2", 400, "carleton");
+		</script>
+		<script type="text/javascript" src="controllers.js"></script>
 	</body>
 </html>

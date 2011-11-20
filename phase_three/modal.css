@@ -1,0 +1,58 @@
+#modal_container {
+	position: relative;
+	z-index: 100;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 309px;
+	background-color: blue;
+	text-align: center;
+	font-family: "Lucida Grande";
+	color: white;
+	font-size: 24px;
+	line-height: 40px;
+}
+#modal_body {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 266px;
+	background-color:green;
+}
+#modal_tag {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 191px;
+	height: 43px;
+	background-color:red;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	cursor: pointer;
+}
+#modal_search_type {
+	position: relative;
+	width: 500px;
+	height: 80px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#filter_by {
+	font-size: 36px;
+	font-family: "Lucida Grande";
+}
+.modal_search_body {
+	position: relative;
+	width: 500px;
+	height: 136px;
+	background-color: purple;
+}
+#filter_advance {
+	position: relative;
+	width: 500px;
+	height: 80px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: none;
+}
