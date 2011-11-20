@@ -11,7 +11,7 @@ var CANVAS_LANE_INFO = function() {
 	var text_color = [255,195,0];
 	var divider_color = [232,12,122];
 	var img;
-	var school = "carleton";
+	var school = "bethel";
 	var runner = "Ezra Velazquez";
 	var time = "00:55.26";
 	var year = "SR";
@@ -32,7 +32,16 @@ var CANVAS_LANE_INFO = function() {
 	  	processing.colorMode(processing.RGB);
 	  	processing.background(22,22,22);
 	  	font = processing.loadFont("Futura");
-	  	img = processing.loadImage("assets/big_"+school.toLowerCase()+".png");
+	  	img = new Array();
+	  	img['augsburg'] = processing.loadImage("assets/big_augsburg.png");
+	  	img['bethel'] = processing.loadImage("assets/big_bethel.png");
+	  	img['carleton'] = processing.loadImage("assets/big_carleton.png");
+	  	img['gustavus'] = processing.loadImage("assets/big_gustavus.png");
+	  	img['hamline'] = processing.loadImage("assets/big_hamline.png");
+	  	img['luther'] = processing.loadImage("assets/big_luther.png");
+	  	img['macalester'] = processing.loadImage("assets/big_macalester.png");
+	  	img['mankato'] = processing.loadImage("assets/big_mankato.png");
+	  	img['olaf'] = processing.loadImage("assets/big_olaf.png");
 	  }
 	   
 	  // Override draw function, by default it will be called 60 times per second  
@@ -80,7 +89,7 @@ var CANVAS_LANE_INFO = function() {
 	    	processing.pushMatrix();
 	    		processing.translate(60,processing.height/2);
 	    		processing.imageMode(processing.CENTER);
-	    		processing.image(img,0,0);
+	    		processing.image(img[school],0,0);
 	    	processing.popMatrix();
 	    }
 	    function drawText() {
@@ -126,7 +135,18 @@ var CANVAS_LANE_INFO = function() {
 			console.log("Update lane info box");
 			
 			//console.log(data);
-			school = data.college;
+			if(data.college.indexOf('Mankato') != -1) {
+				school = "mankato";
+				console.log('mankato called');
+			}
+			else if(data.college.indexOf('Olaf') != -1) {
+				school = "olaf";
+				console.log('olaf called');
+			}
+			else {
+				school = data.college.toLowerCase();
+			}
+			console.log(school);
 			runner = data.runner;
 			time = data.time;
 			year = data.year.toUpperCase();

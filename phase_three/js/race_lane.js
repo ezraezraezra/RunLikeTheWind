@@ -21,6 +21,12 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school) {
 	  	processing.colorMode(processing.RGB);
 	  	processing.background(22,22,22);
 	  	font = processing.loadFont("Futura");
+	  	if(_school.indexOf("Mankato") != -1) {
+	  		_school = "mankato";
+	  	}
+	  	else if(_school.indexOf("Olaf") != -1) {
+	  		_school = "olaf";
+	  	}
 	  	img = processing.loadImage("assets/small_"+_school.toLowerCase()+".png");
 	  }
 	   
