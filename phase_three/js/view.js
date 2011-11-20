@@ -10,6 +10,7 @@ var VIEWER = function() {
 		for(var x = 0; x < all_lanes.length; x++) {
 			all_lanes[x].destroyLane();
 		}
+		all_lanes_info = new Array();
 	}
 	
 	return {
@@ -33,6 +34,7 @@ var VIEWER = function() {
 			console.log ('update info box');
 			console.log(lane_number);
 			console.log(all_lanes_info[lane_number]);
+			return all_lanes_info[lane_number];
 		}
 	};
 }();

@@ -2,6 +2,9 @@
  * @author Ezra Velazquez
  */
 var CONTROLLERS = function() {
+	var filter_primary = "";
+	var filter_secondary = "";
+	
 	// var runnerAmount = function() {
 		// $("#runner_amount").slider({
 			// change: function(event, ui) {
@@ -10,16 +13,26 @@ var CONTROLLERS = function() {
 		// });
 // 		
 	// }();
+	
+	function pickSearch() {
+		if(filter_primary.indexOf('college') != -1) {
+			SEARCH_DB.searchByCollege(filter_secondary);
+		}
+	}
+	
 	$(document).ready(function() {
 		$("#lane_container").delegate(".canvas_race_lane", "mouseenter", function() {
 			console.log($(this).attr("id"));
 			var id = $(this).attr("id");
 			var lane_number = id.substr(id.length - 1, id.length);
-			VIEWER.updateInfoBox(lane_number);
+			CANVAS_LANE_INFO.update(VIEWER.updateInfoBox(lane_number));
 		});
 		$("#filter_by").change(function() {
 			console.log("A selection has been made");
 			console.log($(this).val());
+			
+			filter_primary = $(this).val();
+			
 			$("#filter_advance").html(MODAL.changeDisplay($(this).val()));
 			$("#filter_advance").slideDown();
 		});
@@ -28,6 +41,10 @@ var CONTROLLERS = function() {
 			$("#filter_advance").slideUp(function() {
 				$("#modal_search_type").slideUp();
 			});
+			
+			filter_secondary = $(this).val();
+			
+			pickSearch();
 		});
 		$("#modal_tag").click(function() {
 			

@@ -12,12 +12,10 @@
 		<script type="text/javascript" src="js/lane_info.js"></script>
 		<script type="text/javascript" src="js/modal.js"></script>
 		<link type="text/css" href="modal.css" rel="stylesheet" />
-		<title>New Web Project</title>
+		<title>RunLikeTheWind</title>
 	</head>
 	<body>
-		<h1>New Web Project Page</h1>
 		<div id="modal_container">
-			<!--<div id="modal_body">-->
 				<div id="modal_search_type">
 					<span>filter by:</span><br/>
 					<select name="filter_by" id="filter_by">
@@ -29,13 +27,20 @@
 				</div>
 				<div id="filter_advance" class="modal_search_body">
 				</div>
-			<!--</div>-->
 			<div id="modal_tag">Modify</div>
 		</div>
-		<h1>HELLO</h1>
-		<div id="lane_container">
-			Lane Container
+		<div id="container">
+			<div id="container_top">
+				<canvas id="canvas_lane_info" width="200" height="200"></canvas>
+			</div>
+			<div id="container_middle">
+				<div id="lane_container">
+					Lane Container
+				</div>
+			</div>
+			<div id="container_bottom">
+				Slider goes here
+			</div>
 		</div>
-		<canvas id="canvas_lane_info" width="200" height="200"></canvas><br/>
 	</body>
 </html>

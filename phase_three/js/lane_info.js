@@ -17,6 +17,7 @@ var CANVAS_LANE_INFO = function() {
 	var year = "SR";
 	var position = "15";
 	var position_string = "TH";
+	var event = "400M";
 	
 	$(document).ready(function() {
 		init("canvas_lane_info");
@@ -51,7 +52,7 @@ var CANVAS_LANE_INFO = function() {
 	    		processing.strokeWeight(5);
 	    		processing.translate(100,50);
 	    		processing.strokeCap(processing.ROUND);
-	    		processing.line(0,0,250,0);
+	    		processing.line(0,0,320,0);
 	    	processing.popMatrix();
 	    	// Image divider
 	    	processing.pushMatrix();
@@ -66,6 +67,11 @@ var CANVAS_LANE_INFO = function() {
 	    	// Year divider
 	    	processing.pushMatrix();
 	    		processing.translate(265, processing.height/2);
+	    		processing.line(0,0,0,40);
+	    	processing.popMatrix();
+	    	// Position divider
+	    	processing.pushMatrix();
+	    		processing.translate(335, processing.height/2);
 	    		processing.line(0,0,0,40);
 	    	processing.popMatrix();
 	    }
@@ -88,6 +94,8 @@ var CANVAS_LANE_INFO = function() {
 	    	updateInfoText(24, position, [272, processing.height/2 + 30]);
 	    	// Position string
 	    	updateInfoText(18, position_string, [304, processing.height/2 + 30]);
+	    	// Race
+	    	updateInfoText(24, event, [350, processing.height/2 + 30]);
 	    }
 	    
 	    function updateInfoText(font_size, text_to_display, coordinates) {
@@ -116,11 +124,14 @@ var CANVAS_LANE_INFO = function() {
 	return {
 		update : function(data) {
 			console.log("Update lane info box");
-			school = data.school;
+			
+			//console.log(data);
+			school = data.college;
 			runner = data.runner;
 			time = data.time;
 			year = data.year.toUpperCase();
 			position = data.position;
+			event = data.event;
 			if( (position >= 4 && position <= 20) || (position >= 24 && position <= 30) || (position >=34 && position <= 40)) {
 				position_string = "TH";
 			}
@@ -132,6 +143,10 @@ var CANVAS_LANE_INFO = function() {
 			}
 			else if(position === 3 || position === 23 || position === 33 || position === 43) {
 				position_string = "RD";
+			}
+			
+			if(position >= 1 && position <= 9) {
+				position = "0" + position;
 			}
 		}
 	};
