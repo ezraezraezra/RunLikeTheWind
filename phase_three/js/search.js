@@ -34,7 +34,8 @@ var SEARCH_DB = function() {
 		searchByCollege : function(college) {
 			standardSearch('college', college);
 		},
-		searchByRace : function(race) {
+		searchByEvent : function(race) {
+			console.log("This is the event being sent: "+race);
 			standardSearch('event', race);
 		},
 		searchByHeat : function(heat) {

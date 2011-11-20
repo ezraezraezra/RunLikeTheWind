@@ -18,13 +18,18 @@ var CONTROLLERS = function() {
 		if(filter_primary.indexOf('college') != -1) {
 			SEARCH_DB.searchByCollege(filter_secondary);
 		}
+		else if(filter_primary.indexOf('event') != -1) {
+			SEARCH_DB.searchByEvent(filter_secondary);
+		}
 	}
 	
 	$(document).ready(function() {
 		$("#lane_container").delegate(".canvas_race_lane", "mouseenter", function() {
 			console.log($(this).attr("id"));
 			var id = $(this).attr("id");
-			var lane_number = id.substr(id.length - 1, id.length);
+			console.log("This is the id: "+id);
+			console.log(id.substr(id.indexOf("lane_") + 5, id.length));
+			var lane_number = id.substr(id.indexOf("lane_") + 5, id.length);
 			CANVAS_LANE_INFO.update(VIEWER.updateInfoBox(lane_number));
 		});
 		$("#filter_by").change(function() {
