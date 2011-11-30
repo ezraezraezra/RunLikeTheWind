@@ -74,6 +74,9 @@ var VIEWER = function() {
 				//all_lanes[x].updateMarkerPosition(all_lanes_info[x].time);
 				all_lanes[x].updateMarkerPosition(timer_state);
 			}
+		},
+		getLaneAmount: function() {
+			return all_lanes.length;
 		}
 	};
 }();

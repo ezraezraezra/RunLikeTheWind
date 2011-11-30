@@ -135,6 +135,7 @@ body {
 	height: 50px;
 	background: url('../assets/slider_background.png') no-repeat;
 	text-align: center;
+	visibility: hidden;
 }
 #slide_amount {
 	position: relative;

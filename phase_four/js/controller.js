@@ -34,11 +34,28 @@ var CONTROLLERS = function() {
 		$modal_search_type = $("#modal_search_type");
 		$modal_tag = $("#modal_tag");
 		$canvas_race_info = $("#canvas_race_info");
+		$slider_container = $("#slide_container");
+		$runner_amount = $("#runner_amount");
 		
 		var runnerAmount = function() {
 			$("#runner_amount").slider({
 				change: function(event, ui) {
-					console.log($(this).slider("value"));
+					
+					var lane_amount = VIEWER.getLaneAmount();
+					var amount_to_display = map_range($(this).slider("value"), 0, 100, 1, lane_amount);
+					
+					for(var x = 0; x < lane_amount; x++) {
+						if(x <= amount_to_display) {
+							$("#canvas_race_lane_" + x).css("display", "inline");
+						}
+						else {
+							$("#canvas_race_lane_" + x).css("display", "none");
+						}
+					}
+					
+					function map_range(value, low1, high1, low2, high2) {
+						return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+					}
 				}
 			});
 		
@@ -51,15 +68,11 @@ var CONTROLLERS = function() {
 		$lane_container.delegate(".canvas_race_lane", "mouseenter", function() {
 			console.log($(this).attr("id"));
 			var id = $(this).attr("id");
-			console.log("This is the id: "+id);
-			console.log(id.substr(id.indexOf("lane_") + 5, id.length));
 			var lane_number = id.substr(id.indexOf("lane_") + 5, id.length);
 			CANVAS_LANE_INFO.update(VIEWER.updateInfoBox(lane_number));
 			VIEWER.updateLaneColor(lane_number);
 		});
 		$filter_by.change(function() {
-			console.log("A selection has been made");
-			console.log($(this).val());
 			
 			filter_primary = $(this).val();
 			
@@ -67,13 +80,14 @@ var CONTROLLERS = function() {
 			$filter_advance.slideDown();
 		});
 		$filter_advance.delegate(".filter_secondary", "change", function() {
-			console.log($(this).val());
 			$filter_advance.slideUp(function() {
 				$modal_search_type.slideUp();
 			});
 			
 			filter_secondary = $(this).val();
 			
+			$runner_amount.slider("value", 100);
+			$slider_container.css("visibility", "visible");
 			CANVAS_RACE_TIMER.clockReset();
 			
 			pickSearch();
