@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="js/lib/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="js/lib/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" src="js/lib/processing-1.3.6.min.js"></script>
+		
+		<script type="text/javascript" src="js/search.js"></script>
+		<script type="text/javascript" src="js/view.js"></script>
+		<script type="text/javascript" src="js/controller.js"></script>
+		<script type="text/javascript" src="js/views/race_lane.js"></script>
+		<script type="text/javascript" src="js/views/lane_info.js"></script>
+		<script type="text/javascript" src="js/views/timer.js"></script>
+		<script type="text/javascript" src="js/views/modal.js"></script>
+		<script type="text/javascript" src="js/views/scale.js"></script>
+		
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
+		
+		<title>RunLikeTheWind</title>
+	</head>
+	<body>
+		<div id="modal_container">
+				<div id="modal_search_type">
+					<span>filter by:</span><br/>
+					<select name="filter_by" id="filter_by">
+						<option class="primary_filter" value="person">Person</option>
+						<option class="primary_filter" value="college">College</option>
+						<option class="primary_filter" value="event">Event</option>
+						<option class="primary_filter" value="heat">Heat</option>
+					</select>
+				</div>
+				<div id="filter_advance" class="modal_search_body">
+				</div>
+			<div id="modal_tag">Modify</div>
+		</div>
+		<div id="container">
+			<div id="container_top">
+				<canvas id="canvas_lane_info" width="200" height="200"></canvas>
+				<canvas id="canvas_race_info" width="200" height="200"></canvas><br/><br/>
+				<div id="slide_container">
+					<div id="slide_amount"></div>
+					<div id="runner_amount"></div>
+				</div>
+				
+			</div>
+			<div id="container_middle">
+				<div id="lane_container">
+					Lane Container
+				</div>
+			</div>
+			<div id="container_bottom">
+				<canvas id="canvas_scale" width="200" height="200"></canvas><br/>
+				Slider goes here
+			</div>
+		</div>
+	</body>
+</html>

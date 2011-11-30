@@ -1,0 +1,146 @@
+/*
+ * Project:     RunLikeTheWind
+ * Class:       Data Representation Final | ITP Fall 2011
+ * Description: A visual representation of the race results of the Men's Meet of the Hearts
+ * Website:     http://ezraezraezra.com/run
+ * 
+ * Author:      Ezra Velazquez
+ * Website:     http://ezraezraezra.com
+ * Date:        December 2011
+ * 
+ */ 
+body {
+	margin: 0;
+	padding: 0;
+}
+#canvas_race_info {
+	cursor: pointer;
+}
+#canvas_scale {
+	position: relative;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+#container {
+	position: relative;
+	top: -50px;
+}
+#container_bottom {
+	position: relative;
+	top: 70px;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#container_middle {
+	position: relative;
+	top: 60px;
+}
+#container_top {
+	position: relative;
+	padding-bottom: 50px;
+	width: 1052px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#canvas_lane_info {
+	position: relative;
+	float: left;
+}
+#canvas_race_info {
+	position: relative;
+	float: right;
+}
+#filter_advance {
+	position: relative;
+	width: 500px;
+	height: 80px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: none;
+}
+#filter_by {
+	font-size: 36px;
+	font-family: "Lucida Grande";
+}
+#lane_container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+}
+#modal_body {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 266px;
+	background-color:green;
+}
+#modal_container {
+	position: relative;
+	z-index: 100;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 50px;
+	background-color: blue;
+	text-align: center;
+	font-family: "Lucida Grande";
+	color: white;
+	font-size: 24px;
+	line-height: 40px;
+}
+.modal_search_body {
+	position: relative;
+	width: 500px;
+	height: 136px;
+	background-color: purple;
+}
+#modal_search_type {
+	position: relative;
+	width: 500px;
+	height: 80px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: red;
+	display: none;
+}
+#modal_tag {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 191px;
+	height: 43px;
+	background-color:red;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	cursor: pointer;
+}
+#runner_amount {
+	position: relative;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	top: -30px;
+/**top: 100px;**/
+}
+#slide_container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	top: 105px;
+	height: 50px;
+	background: url('../assets/slider_background.png') no-repeat;
+	text-align: center;
+}
+#slide_amount {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	background-color: transparent;
+	height: 50px;
+}
