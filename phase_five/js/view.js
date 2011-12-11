@@ -31,11 +31,8 @@ var VIEWER = function() {
 			destroyLanes();
 			
 			 $("#lane_container").html("");
-			 console.log("Start of for loop");
 			for(var x = 0; x < data.total; x++) {
-				console.log(x);
 				all_lanes_info.push(data.results[x]);
-				console.log(all_lanes_info[x].time);
 				var event = data.results[x].event.substr(0,data.results[x].event.length - 1);
 				var college = data.results[x].college;
 				$("#lane_container").append('<canvas id="canvas_race_lane_'+x+'" class="canvas_race_lane" width="200" height="200"></canvas><br/>');
@@ -54,16 +51,11 @@ var VIEWER = function() {
 				var new_lane = new CANVAS_RACE_LANE("canvas_race_lane_"+x, event, college, all_lanes_info[x].time);
 				all_lanes.push(new_lane);
 			}
-			console.log("Lanes Created");
 		},
 		updateInfoBox : function(lane_number) {
-			console.log ('update info box');
-			console.log(lane_number);
-			console.log(all_lanes_info[lane_number]);
 			return all_lanes_info[lane_number];
 		},
 		updateLaneColor: function(lane_number) {
-			console.log('update lane color');
 			for(var x = 0; x < all_lanes.length; x++) {
 				all_lanes[x].updateLaneColor(false);
 			}
@@ -71,7 +63,6 @@ var VIEWER = function() {
 		},
 		autoUpdateMarkerPosition: function(timer_state) {
 			for(var x = 0; x < all_lanes.length; x++) {
-				//all_lanes[x].updateMarkerPosition(all_lanes_info[x].time);
 				all_lanes[x].updateMarkerPosition(timer_state);
 			}
 		},

@@ -38,16 +38,20 @@ var CONTROLLERS = function() {
 	
 	function init() {
 		$lane_container = $("#lane_container");
-		$filter_by = $(".primary_filter");//$("#filter_by");
+		$filter_by = $(".primary_filter");
 		$filter_advance = $("#filter_advance");
 		$modal_search_type = $("#modal_search_type");
-		$modal_tag = $("#button_modify"); //$("#modal_tag");
+		$modal_tag = $("#button_modify");
 		$canvas_race_info = $("#canvas_race_info");
 		$slider_container = $("#slide_container");
 		$runner_amount = $("#runner_amount");
+		$cover_modal = $("#cover_modal");
+		$container_modal = $("#container_modal");
+		$button_name = $("#button_name");
+		$secondary_filter = $(".secondary_filter");
 		
 		var runnerAmount = function() {
-			$("#runner_amount").slider({
+			$runner_amount.slider({
 				change: function(event, ui) {
 					
 					var lane_amount = VIEWER.getLaneAmount();
@@ -75,7 +79,6 @@ var CONTROLLERS = function() {
 		init();
 		
 		$lane_container.delegate(".canvas_race_lane", "mouseenter", function() {
-			console.log($(this).attr("id"));
 			var id = $(this).attr("id");
 			var lane_number = id.substr(id.indexOf("lane_") + 5, id.length);
 			CANVAS_LANE_INFO.update(VIEWER.updateInfoBox(lane_number));
@@ -83,45 +86,31 @@ var CONTROLLERS = function() {
 		});
 		$filter_by.click(function() {
 			
-			console.log("filter by");
-			
 			$filter_by.each(function() {
 				$(this).css("backgroundColor", "#0099CC");
 			});
 			
 			$(this).css("backgroundColor", 'red');
-			//console.log($(this).attr('id').split('_')[1]);
 			filter_primary = $(this).attr('id').split('_')[1];
 			$filter_advance.html(MODAL.changeDisplay($(this).attr('id').split('_')[1]));
 			$filter_advance.slideDown();
 			
-			
-			// filter_primary = $(this).val();
-// 			
-			// $filter_advance.html(MODAL.changeDisplay($(this).val()));
-			// $filter_advance.slideDown();
 		});
-		$filter_advance.delegate(".secondary_filter", "click", function() {
-			// $filter_advance.slideUp(function() {
-				// $modal_search_type.slideUp();
-			// });
-			
-			$(".secondary_filter").each(function() {
+		$filter_advance.delegate(".secondary_filter", "click", function() {			
+			$secondary_filter.each(function() {
 				$(this).css("backgroundColor", "#0099CC");
 			});
 			$(this).css("backgroundColor", 'red');
 			
 			$filter_advance.slideUp(function() {
-				$("#cover_modal").fadeOut();
-				$("#container_modal").fadeOut();
+				$cover_modal.fadeOut();
+				$container_modal.fadeOut();
 			});
 			$filter_by.each(function() {
 				$(this).css("backgroundColor", "#0099CC");
 			});
 			
 			filter_secondary = $(this).html();
-			console.log($(this).html());
-			// filter_secondary = $(this).val();
 			
 			$runner_amount.slider("value", 100);
 			$slider_container.css("visibility", "visible");
@@ -132,13 +121,13 @@ var CONTROLLERS = function() {
 		$filter_advance.delegate("#button_name", "click", function() {
 			$(this).css("backgroundColor", "red");
 			
-			name_first = $("#fa_first").val();
-			name_last = $("#fa_last").val();
+			name_first = $('#fa_first').val();
+			name_last = $('#fa_last').val();
 			
 			$filter_advance.slideUp(function() {
-				$("#cover_modal").fadeOut();
-				$("#container_modal").fadeOut(function() {
-					$("#button_name").css("backgroundColor", "#0099CC");
+				$cover_modal.fadeOut();
+				$container_modal.fadeOut(function() {
+					$button_name.css("backgroundColor", "#0099CC");
 					$filter_by.each(function() {
 						$(this).css("backgroundColor", "#0099CC");
 					});
@@ -153,20 +142,15 @@ var CONTROLLERS = function() {
 			pickSearch();
 		});
 		$modal_tag.click(function() {
-			
-			console.log("Modify view");
-			//$modal_search_type.slideDown();
-			$("#cover_modal").fadeIn();
-			$("#container_modal").fadeIn();
+			$cover_modal.fadeIn();
+			$container_modal.fadeIn();
 		});
 		$canvas_race_info.click(function() {
 			var clock_status = CANVAS_RACE_TIMER.clockStatus();
 			if(clock_status === true) {
-				console.log("run little piggies, run");
 				VIEWER.autoUpdateMarkerPosition(true);
 			}
 			else {
-				console.log("that will do, pig, that will do");
 				VIEWER.autoUpdateMarkerPosition(false);
 			}
 		});

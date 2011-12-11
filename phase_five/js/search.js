@@ -20,18 +20,11 @@ var SEARCH_DB = function() {
 				st_1 : type,
 				sv_1 : value
 			}, function(data){
-				//console.log(data);
-				console.log(data.total);
-				console.log(data);
 				VIEWER.createLanes(data);
 			});
 	}
 	
 	function advancedSearch(type_1, value_1, value_2) {
-		console.log("st_1: "+type_1);
-		console.log("st_2:" +type_1);
-		console.log("sv_1: " + value_1);
-		console.log("sv_2: "+ value_2);
 		$.getJSON('php/server.php', {
 			st_1 : type_1,
 			st_2 : type_1,
@@ -39,8 +32,6 @@ var SEARCH_DB = function() {
 			sv_2 : value_2,
 			sq   : 'advanced'
 		}, function(data){
-			console.log(data);
-			console.log(data.total)
 			VIEWER.createLanes(data);
 		});
 	}
@@ -53,7 +44,6 @@ var SEARCH_DB = function() {
 			standardSearch('college', college);
 		},
 		searchByEvent : function(race) {
-			console.log("This is the event being sent: "+race);
 			standardSearch('event', race);
 		},
 		searchByHeat : function(heat) {
