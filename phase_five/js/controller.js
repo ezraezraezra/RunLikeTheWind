@@ -16,6 +16,9 @@ var CONTROLLERS = function() {
 	var filter_primary = "";
 	var filter_secondary = "";
 	
+	var name_first = "";
+	var name_last = "";
+	
 	var $lane_container, $filter_by, $filter_advance, $modal_search_type, $modal_tag, $canvas_race_info;
 	
 	function pickSearch() {
@@ -27,6 +30,9 @@ var CONTROLLERS = function() {
 		}
 		else if(filter_primary.indexOf('heat') != -1) {
 			SEARCH_DB.searchByHeat(filter_secondary);
+		}
+		else if(filter_primary.indexOf('person') != -1) {
+			SEARCH_DB.searchByPerson(name_first, name_last);
 		}
 	}
 	
@@ -80,7 +86,7 @@ var CONTROLLERS = function() {
 			console.log("filter by");
 			
 			$filter_by.each(function() {
-				$(this).css("backgroundColor", "#0BBFBF");
+				$(this).css("backgroundColor", "#0099CC");
 			});
 			
 			$(this).css("backgroundColor", 'red');
@@ -101,7 +107,7 @@ var CONTROLLERS = function() {
 			// });
 			
 			$(".secondary_filter").each(function() {
-				$(this).css("backgroundColor", "#0BBFBF");
+				$(this).css("backgroundColor", "#0099CC");
 			});
 			$(this).css("backgroundColor", 'red');
 			
@@ -110,15 +116,35 @@ var CONTROLLERS = function() {
 				$("#container_modal").fadeOut();
 			});
 			$filter_by.each(function() {
-				$(this).css("backgroundColor", "#0BBFBF");
+				$(this).css("backgroundColor", "#0099CC");
 			});
-			
-			
-			
 			
 			filter_secondary = $(this).html();
 			console.log($(this).html());
 			// filter_secondary = $(this).val();
+			
+			$runner_amount.slider("value", 100);
+			$slider_container.css("visibility", "visible");
+			CANVAS_RACE_TIMER.clockReset();
+			
+			pickSearch();
+		});
+		$filter_advance.delegate("#button_name", "click", function() {
+			$(this).css("backgroundColor", "red");
+			
+			name_first = $("#fa_first").val();
+			name_last = $("#fa_last").val();
+			
+			$filter_advance.slideUp(function() {
+				$("#cover_modal").fadeOut();
+				$("#container_modal").fadeOut(function() {
+					$("#button_name").css("backgroundColor", "#0099CC");
+					$filter_by.each(function() {
+						$(this).css("backgroundColor", "#0099CC");
+					});
+				});
+			});
+			
 			
 			$runner_amount.slider("value", 100);
 			$slider_container.css("visibility", "visible");

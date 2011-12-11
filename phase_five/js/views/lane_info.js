@@ -19,7 +19,7 @@ var CANVAS_LANE_INFO = function() {
 	var text_color = [255,195,0];
 	var divider_color = [232,12,122];
 	var img;
-	var school = "bethel";
+	var school = "carleton";
 	var runner = "Ezra Velazquez";
 	var time = "00:55.26";
 	var year = "SR";
@@ -50,13 +50,12 @@ var CANVAS_LANE_INFO = function() {
 	  	img['macalester'] = processing.loadImage("assets/big_macalester.png");
 	  	img['mankato'] = processing.loadImage("assets/big_mankato.png");
 	  	img['olaf'] = processing.loadImage("assets/big_olaf.png");
+	  	img['unattached'] = processing.loadImage("assets/big_unattached.png");
 	  }
 	   
 	  // Override draw function, by default it will be called 60 times per second  
 	  processing.draw = function() {  
 	    processing.background(22,22,22);
-	    //drawTrack(_length);
-	    //drawPosition();
 	    drawDividers();
 	    drawImage();
 	    drawText();
@@ -129,7 +128,6 @@ var CANVAS_LANE_INFO = function() {
 	}
 	
 	function init(_canvas) {
-		console.log(_canvas);
 		canvas = document.getElementById(_canvas);
 		// attaching the sketchProc function to the canvas 
 		p = new Processing(canvas, sketchProc);
@@ -140,21 +138,15 @@ var CANVAS_LANE_INFO = function() {
 	  
 	return {
 		update : function(data) {
-			console.log("Update lane info box");
-			
-			//console.log(data);
 			if(data.college.indexOf('Mankato') != -1) {
 				school = "mankato";
-				console.log('mankato called');
 			}
 			else if(data.college.indexOf('Olaf') != -1) {
 				school = "olaf";
-				console.log('olaf called');
 			}
 			else {
 				school = data.college.toLowerCase();
 			}
-			console.log(school);
 			runner = data.runner;
 			time = data.time;
 			year = data.year.toUpperCase();

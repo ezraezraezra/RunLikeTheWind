@@ -57,10 +57,10 @@ class Server {
 		$request = "SELECT * FROM data_rep_final WHERE $search_type ='$search_value'";
 		return $this->getRaceData($request);
 	}
-	
+
 	function requestAdvancedRaceData($search_type_1, $search_value_1, $search_type_2, $search_value_2) {
-		$request = "SELECT * FROM data_rep_final WHERE ($search_type_1 LIKE '%$search_value_1%') AND ($search_type_2 LIKE '%$search_value_2%')";
-		echo $this->getRaceData($request);
+		$request = "SELECT * FROM data_rep_final WHERE $search_type_1 LIKE '%$search_value_1%' AND $search_type_2 LIKE '%$search_value_2%'";
+		return $this->getRaceData($request);
 	}
 	
 	function getRaceData($request_string) {
@@ -94,7 +94,7 @@ $server = new Server();
 $server->startApp();
 
 if(strcasecmp($search_quality, 'advanced') == 0) {
-	$server->requestAdvancedRaceData($st_1, $sv_1, $st_2, $sv_2);
+	$results = json_encode($server->requestAdvancedRaceData($st_1, $sv_1, $st_2, $sv_2));
 }
 else {
 	$results =  json_encode($server->requestRaceData($st_1, $sv_1));

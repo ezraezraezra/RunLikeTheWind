@@ -14,6 +14,18 @@ body {
 	padding: 0;
 	background-color: #161616;
 }
+#button_name {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height: 40px;
+	background-color: #0099CC;
+	font-size: 20px;
+	top: 30px;
+	line-height: 40px;
+	cursor: pointer;
+}
 #button_modify {
 	position: relative;
 	margin-left: 40px;
@@ -24,12 +36,24 @@ body {
 	font-size: 24px;
 	text-align: center;
 	line-height: 60px;
-	/*top: -30px;*/
 	top: 5px;
 	cursor: pointer;
 }
+#canvas_lane_info {
+	position: relative;
+	top: 15px;
+	outline: none;
+}
+#canvas_race_info {
+	position: relative;
+	
+	outline: none;
+}
 #canvas_race_info {
 	cursor: pointer;
+}
+.canvas_race_lane {
+	outline: none;
 }
 #canvas_scale {
 	position: relative;
@@ -52,9 +76,16 @@ body {
 	position: relative;
 	top: 60px;
 }
+#container_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 11;
+}
 #container_top {
 	position: relative;
-	/*padding-bottom: 50px;*/
 	width: 1052px;
 	margin-left: auto;
 	margin-right: auto;
@@ -72,18 +103,50 @@ body {
 	width: 450px;
 	height: 175px;
 }
-#canvas_lane_info {
-	position: relative;
-	/*float: left;*/
-	top: 15px;
-	outline: none;
+#cover_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color:#0099CC;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	opacity: .5;
 }
-#canvas_race_info {
+#fa_first {
 	position: relative;
-	
-	outline: none;
+	font-family: "Futura";
+	font-size: 18px;
 }
-
+#fa_last {
+	position: relative;
+	font-family: "Futura";
+	font-size: 18px;
+}
+#filter_advance {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 200px;
+	background-color:#000000;
+	top: 50px;
+	font-family: "Futura";
+	color: #ffffff;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	display: none;
+}
+#filter_advance_name {
+	position: relative;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 190px;
+	top: 10px;
+}
 #filter_by {
 	font-size: 36px;
 	font-family: "Lucida Grande";
@@ -123,15 +186,6 @@ body {
 	background-color: purple;
 }
 #modal_search_type {
-	/*
-	position: relative;
-	width: 500px;
-	height: 80px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: red;
-	display: none;
-	*/
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -163,7 +217,6 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	top: -30px;
-/**top: 100px;**/
 }
 #slide_container {
 	position: relative;
@@ -184,25 +237,6 @@ body {
 	background-color: transparent;
 	height: 50px;
 }
-
-#cover_modal {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color:#0099CC;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	opacity: .5;
-}
-#container_modal {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 11;
-}
 .primary_filter {
 	position: relative;
 	float: left;
@@ -211,11 +245,12 @@ body {
 	font-family: "Futura";
 	text-align: center;
 	font-size: 20px;
-	background-color: #0BBFBF;
+	background-color: #0099CC;
 	line-height: 35px;
 	margin: 8px;
 	margin-left: 15px;
 	cursor: pointer;
+	color: black;
 }
 .secondary_filter {
 	position: relative;
@@ -225,34 +260,10 @@ body {
 	font-family: "Futura";
 	text-align: center;
 	font-size: 14px;
-	background-color: #0BBFBF;
+	background-color: #0099CC;
 	line-height: 35px;
 	margin: 8px;
 	margin-left: 15px;
 	cursor: pointer;
-}
-#filter_advance {
-/*	position: relative;
-	width: 500px;
-	height: 80px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	display: block;*/
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
-	height: 200px;
-	background-color:#000000;
-	top: 50px;
-	font-family: "Futura";
-	color: #ffffff;
-	font-size: 24px;
-	text-align: center;
-	padding-top: 10px;
-	padding-bottom: 15px;
-	display: none;
-}
-.canvas_race_lane {
-	outline: none;
+	color: black;
 }

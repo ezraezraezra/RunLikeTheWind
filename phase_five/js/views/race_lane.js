@@ -37,29 +37,21 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 	
 	function setMarkerTimespan(_total_time) {
 			var total_time = _total_time.split(/[\.:]/);
-			console.log(total_time);
 			
 			for(var x = total_time.length; x > 0; x--) {
 				var temp_time;
 				if(x == total_time.length) {
 					temp_time = parseInt(total_time[x-1]);
-					console.log(temp_time);
 				}
 				else if(x == total_time.length - 1) {
-					//temp_time = parseInt(total_time[x - 1]) * 100;
 					temp_time = parseInt(total_time[x-1] * 60);
-					console.log(temp_time);
 				}
 				else if(x == total_time.length - 2) {
-					//temp_time = parseInt(total_time[x - 1]) * 10000;
 					temp_time = parseInt(total_time[x-1] * 60 * 60);
-					console.log(temp_time);
 				}
 				current_time.end_time += temp_time;
-				console.log(total_time[x - 1] + " for x="+x);
 			}
 			
-			console.log(current_time.end_time);
 	}
 	
 	// Simple way to attach js code to the canvas is by using a function  
@@ -105,7 +97,6 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 	    }
 	    
 	    function updateTime() {
-	    	// if(current_time.reset === false) {
 		    	if (updateMarkerPosition === true) {
 		    		if(current_time.ms < 60) {
 		    			current_time.ms += 1;
@@ -124,9 +115,6 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 		    			}
 		    		}
 		    	
-		    	//current_time.time_string =  timeToString(current_time.min) + ":" + timeToString(current_time.sec) + ":" + timeToString(current_time.ms);
-		    	// Mapping function here
-		    	//current_time.current = (current_time.min * 10000) + (current_time.sec * 100) + (current_time.ms);
 		    	current_time.current = (current_time.min * 60 * 60) + (current_time.sec * 60) + (current_time.ms);
 		    	current_time.position = processing.map(current_time.current, 0, current_time.end_time, 0, 840);	
 		    	if(current_time.position >= 840) {
@@ -135,10 +123,6 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 		    	}
 		    		
 		    	}
-	    	// }
-	    	// else {
-	    		// //current_time.time_string = "00:00:00";
-	    	// }
 	    }
 	    
 	    
@@ -148,7 +132,6 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 	
 	function init(_canvas) {
 		setMarkerTimespan(_total_time);
-		console.log(_canvas);
 		canvas = document.getElementById(_canvas);
 		// attaching the sketchProc function to the canvas 
 		p = new Processing(canvas, sketchProc);
@@ -172,30 +155,7 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 		destroyLane : function() {
 			p.exit();
 		},
-		updateMarkerPosition: function(timer_state) {
-			// total_time = _total_time.split(/[\.:]/);
-			// console.log(total_time);
-// 			
-			// for(var x = total_time.length; x > 0; x--) {
-				// var temp_time;
-				// if(x == total_time.length) {
-					// temp_time = parseInt(total_time[x-1]);
-					// console.log(temp_time);
-				// }
-				// else if(x == total_time.length - 1) {
-					// temp_time = parseInt(total_time[x - 1]) * 100;
-					// console.log(temp_time);
-				// }
-				// else if(x == total_time.length - 2) {
-					// temp_time = parseInt(total_time[x - 1]) * 10000;
-					// console.log(temp_time);
-				// }
-				// current_time.end_time += temp_time;
-				// console.log(total_time[x - 1] + " for x="+x);
-			// }
-// 			
-			// console.log(current_time.end_time);
-			
+		updateMarkerPosition: function(timer_state) {			
 			updateMarkerPosition = timer_state;
 		}
 	};

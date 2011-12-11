@@ -93,6 +93,12 @@ var CANVAS_SCALE = function() {
 	    		}
 	    	}
 	    	
+	    	processing.pushMatrix();
+	    		processing.textFont(font, 12);
+	    		processing.text('Meters', 700, 60);
+	    		processing.text('Yards', 700, 100);
+	    	processing.popMatrix();
+	    	
 	    	markers(   0,1,'m');
 	    	markers(  55,0,'m');
 	    	markers( 200,1,'m');

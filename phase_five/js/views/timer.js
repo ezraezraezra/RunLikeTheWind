@@ -46,13 +46,17 @@ var CANVAS_RACE_TIMER = function() {
 	    
 	    function graphics() {
 	    	rectangle();
-	    	//diamond();
 	    	action();
 	    	
 	    	function rectangle() {
 	    		processing.pushMatrix();
 	    			processing.noStroke();
-	    			processing.fill(232,12,122);
+	    			if(current_time.start == false) {
+	    				processing.fill(232,12,122);
+	    			}
+	    			else {
+	    				processing.fill(188,232,37);
+	    			}
 	    			processing.translate(80, 30);
 	    			processing.rect(0,0,200,60);
 	    		processing.popMatrix();
@@ -71,7 +75,12 @@ var CANVAS_RACE_TIMER = function() {
 	    	function action() {
 	    		processing.pushMatrix();
 	    			processing.noStroke();
-	    			processing.fill(188,232,37);
+	    			if(current_time.start == true) {
+	    				processing.fill(232,12,122);
+	    			}
+	    			else {
+	    				processing.fill(188,232,37);
+	    			}
 	    			processing.translate(40, 30);
 	    			processing.rect(0,0,80,60);
 	    		processing.popMatrix();
@@ -79,13 +88,8 @@ var CANVAS_RACE_TIMER = function() {
 	    }
 	    
 	    function text() {
-	    	// updateInfoText(48, heat, [56,80], [232,12,122]);
-	    	// updateInfoText(12, "HEAT", [56,95], [232,12,122]);
-	    	// updateInfoText(22, race_name, [135,65], [184,232,37]);
-	    	// updateInfoText(16, race_measurement, [190,65],[184,232,37]);
-	    	// updateInfoText(22, "  "+ clock_string +" +",[135,95],[255,195,0]);
-	    	updateInfoText(32, current_time.time_string, [135,70], [184, 232, 37]);
-	    	//updateInfoText(22, current_time.time_wording, [52,80], [232,12,122]);
+	    	updateInfoText(32, current_time.time_string, [135,70], [0, 0, 0]);
+	    	updateInfoText(22, current_time.time_wording, [60,68], [0,0,0]);
 	    	
 	    	function updateInfoText(font_size, text_to_display, coordinates, text_color) {
 	    		processing.pushMatrix();

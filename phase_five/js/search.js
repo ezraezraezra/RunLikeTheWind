@@ -28,7 +28,11 @@ var SEARCH_DB = function() {
 	}
 	
 	function advancedSearch(type_1, value_1, value_2) {
-		$.get('php/server.php', {
+		console.log("st_1: "+type_1);
+		console.log("st_2:" +type_1);
+		console.log("sv_1: " + value_1);
+		console.log("sv_2: "+ value_2);
+		$.getJSON('php/server.php', {
 			st_1 : type_1,
 			st_2 : type_1,
 			sv_1 : value_1,

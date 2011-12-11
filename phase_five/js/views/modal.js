@@ -44,24 +44,32 @@ var MODAL = function() {
 		return output;
 	}
 	
+	function basicTextFields() {
+		var output = '<div id="filter_advance_name">' +
+					'<span>first name: </span>' +
+					'<input type="text" id="fa_first" /><br/><br/>' +
+					'<span>last name: </span>' +
+					'<input type="text" id="fa_last" /><br/>' +
+					'<div id="button_name">filter</div>' +
+					'</div>';
+		return output;
+	}
+	
 	return {
 		changeDisplay : function(choice) {
 			var response;
-			
 			switch(choice) {
-				case 'person':
-					break;
 				case 'college':
-					//response = basicDropDown('college');
 					  response = basicButtons('college');
 					break;
 				case 'event':
-					//response = basicDropDown('event');
 					response = basicButtons('event');
 					break;
 				case 'heat':
-					//response = basicDropDown('heat');
 					response = basicButtons('heat');
+					break;
+				case 'person':
+					response = basicTextFields();
 					break;
 			}
 			
