@@ -22,6 +22,8 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 	var current_state = normal_state;
 	var current_position = 0;
 	var img;
+	var audio_counter = 0;
+	var bell_audio = new Audio("assets/bell3.mp3");
 	
 	var updateMarkerPosition = false;
 	var current_time = {
@@ -120,6 +122,10 @@ var CANVAS_RACE_LANE = function(_canvas, _length,_school, _total_time) {
 		    	if(current_time.position >= 840) {
 		    		current_time.position = 840;
 		    		updateMarkerPosition = false;
+		    		if(audio_counter == 0) {
+		    			audio_counter += 1;
+		    			bell_audio.play();
+		    		}
 		    	}
 		    		
 		    	}
