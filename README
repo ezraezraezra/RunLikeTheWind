@@ -5,16 +5,16 @@
  * Date:        November 2011
  *
  * Title:       RunLikeTheWind
- * Description: Interactive data representation.
+ * Description: Interactive data representation of the mens indoor
+ *              track results at the Meet of the Hearts (2010),
+ *              held at Carleton College.
  *
  * Tech:        CSS, CSS3, HTML, HTML5, JavaScript, jQuery, PHP,
  *              Processing.js, MySQL
- * Last Update: Dec 10th, 2011
+ * Last Update: Dec 13th, 2011
  ***********************************************************************/
  
  NOTE: *** 3rd PARTY LIBRARIES HAVE BEEN OMITTED FROM THE PUBLIC REPO ***
- 
- ** PROJECT CURRENTLY UNDER CONSTRUCTION **
 
  Files Omitted:      jQuery
                      Processing.js
